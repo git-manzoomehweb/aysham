@@ -1,0 +1,418 @@
+<section>
+    <input type="hidden" value="" class="persian_today"/>
+    <div class="bg-tour-search-container unvisible close_content"></div>
+    <div class="tour-search-container unvisible">
+        <form method="post" action="/Tem2_Tour_Search.bc" class="form_search p-relative">
+            <input type="hidden" name="persiancurrent" class="persiancurrent" value="">
+            <input type="hidden" value="" class="tourid" name="tourname"/>
+            <input type="hidden" value="" class="start_date" name="fdate"/>
+            <input type="hidden" value="" class="end_date" name="tdate"/>
+            <input type="hidden" value="" class="start_date_mstring" name="mstring_fdate"/>
+            <input type="hidden" value="" class="end_date_mstring" name="mstring_tdate"/>
+            <input type="hidden" value="" class="cityid" name="cityid"/>
+            <input type="hidden" value="panel" name="data_type"/>
+            <input type="hidden" value="" name="data_type_tour" class="data_type_tour"/>
+            <div class="">
+                <div class="width_50 float-right">
+                    <div class="hvr-horizontal transition background-color_2 font_14 color_white add_room width_60 text-center font_12" onclick="add_room(this)"
+                    ><i class="fa fa-plus"></i>اضافه کردن اتاق</i>
+                </div>
+                </div>
+                <div class="width_50 float-left text-left">
+                        <i class="close-container close_content fa fa-times background-color_1 color_white text-center cursor-pointer"></i>
+                </div>
+                <div class="clr"></div>
+            </div>
+                <div class="CountPassenger font_13 width_100 border-radius">
+                    <div class="Wrapper-CountPassenger transition width_100 unvisible">
+                        <span class="count-room float-right text-center font_11">
+                            <div class="count">1</div>
+                            <div>اتاق</div>
+                        </span>
+                        <span class="count-adult float-right text-center font_11">
+                            <div class="count">1</div>
+                            <div>بزرگسال</div>
+                        </span>
+                        <span class="count-child float-right text-center font_11">
+                            <div class="count">0</div>
+                            <div>کودک</div>
+                        </span>
+                        <div class="clr"></div>
+                    </div>
+                    <p >لطفا تعداد مسافران را انتخاب کنید </p>
+                    <div class="ShowRow">
+                        <div class="contentRoom">
+                            <div class="RoomRow">اتاق 1</div>
+                            <div class="item-CountPassenger">
+                                <div class="first-part-CountPassenger width_40 float-right">بزرگسال (+12)</div>
+                                <div class="second-part-CountPassenger width_60 float-left">
+                                    <div class="passenger-button float-right plus-minus text-left"><span
+                                            class="plus-btn width_50 font_14 text-center">+</span></div>
+                                    <div class="passenger-button float-right text-center"><input type="text"
+                                            name="_root.rooms__1.adultcount" class="adult width_90 text-center font_13"
+                                            maxlength="4000" readonly="" value="1"></div>
+                                    <div class="passenger-button float-right plus-minus text-right"><span
+                                            class="minus-btn width_50 font_14 text-center">-</span></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="item-CountPassenger">
+                                <div class="first-part-CountPassenger width_40 float-right">کودک (-12)</div>
+                                <div class="second-part-CountPassenger width_60 float-left">
+                                    <div class="passenger-button float-right plus-minus-ch text-left"><span
+                                            class="plus-btn width_50 font_14 text-center">+</span></div>
+                                    <div class="passenger-button float-right text-center"><input type="text"
+                                            class="child width_90 text-center font_13" maxlength="4000" readonly="" value="0">
+                                    </div>
+                                    <div class="passenger-button float-right plus-minus-ch text-right"><span
+                                            class="minus-btn width_50 font_14 text-center">-</span></div>
+                                </div>
+                                <input type="hidden" value="0" class="childcountandage" name="_root.rooms__1.childcountandage">
+                                <div class="clr"></div>
+                                <div class="section-select-age"></div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="width_100 submit-form-tour hvr2-horizontal cursor-pointer background-color_1 transition color_white"><i class="fa fa-search"></i>جستجو</button>
+                </div>
+                <div class="clr"></div>
+         </form>
+    </div>
+    <div id="app"></div>
+</section>
+<script type="text/javascript" src="[##cms.cms.cdn##]/js/panel_tour_list.js"></script>
+<script src="[##cms.cms.cdn##]/js/react.production.min.js"></script>
+<script src="[##cms.cms.cdn##]/js/react_dom.production.min.js"></script>
+<script src="[##cms.cms.cdn##]/js/babel.min.js"></script>
+<script src="[##cms.cms.cdn##]/js/react_paging.js"></script>
+<script type="text/babel">
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            library: null,
+            perPage: 10,
+            currentPage: 1,
+            maxPage: null,
+            filterTourName: "",
+            filterCountry: "",
+            filterCity: "",
+            filterFdate:"",
+            filterTdate:""
+        };
+    }
+    componentDidMount() {
+         fetch("/Client_Tour_List_Json.bc", {
+             method: "POST",
+             body:"dmnid=[##cms.cms.domainid##]&begindate="+$(".persian_today").val()+"",
+         })
+         .then((response) => response.text())
+         .then((text) => {
+         text = text.replace(/\"/g, '')
+         let Maindata = JSON.parse(text.replace(/\'/g, '"'));
+         if (Maindata.msg == 'no data') {
+             $(".loading-List").hide()
+         }else{
+          Maindata.splice(Maindata.length - 1, 1);
+        }
+        
+           this.setState(
+             (state) => ({
+                 ...state,
+                 data: Maindata,
+             }),
+             () => {
+                 this.reorganiseLibrary();
+                 $(".loading-List").hide()
+                 $(".section-tourList").show()
+                 }
+                 );
+             })
+             .catch((error) => console.error(error));
+                  
+    }
+    componentDidUpdate() {
+        $(".Basis_Date").each(function () {
+            $(this).attr("onclick", "Basis_Calendar(this,'[##cms.cms.date##]', 1)")
+        })
+        $(".close_content").click(function() {
+          $(".bg-tour-search-container").hide()
+          $(".tour-search-container").hide()
+        })
+        $(".show_passengers").click(function(){
+            var data_tourname = $(this).attr('data-tourname')
+            var data_id = $(this).attr('data-id')
+            var data_begindateSstring = $(this).attr('data-begindateSstring')
+            var data_begindateMstring = $(this).attr('data-begindateMstring')
+            var data_enddateSstring = $(this).attr('data-enddateSstring')
+            var data_enddateMstring = $(this).attr('data-enddateMstring')
+            var data_type = $(this).attr('data-type')
+            var data_cityid = $(this).attr('data-cityid')
+            $(".form_search").find(".tourid").val(data_id)
+            $(".form_search").find(".start_date").val(data_begindateSstring)
+            $(".form_search").find(".end_date").val(data_enddateSstring)
+            $(".form_search").find(".start_date_mstring").val(data_begindateMstring)
+            $(".form_search").find(".end_date_mstring").val(data_enddateMstring)
+            $(".form_search").find(".data_type_tour").val(data_type)
+            $(".form_search").find(".cityid").val(data_cityid)
+            $(".tour-search-container").show()
+            $(".bg-tour-search-container").show()
+        })
+    }
+    reorganiseLibrary = () => {
+        const {filterTourName, filterCountry, filterCity, filterFdate, filterTdate, perPage, data } = this.state;
+        let library = data;
+        if (filterTourName !== "") {
+            library = library.filter(item =>
+                item.name.toLowerCase().includes(filterTourName)
+            )
+        }
+        if (filterCountry !== "") {
+            library = library.filter(item => {
+            if (this.renderfilterCountry(item.destination).some(r => r.includes(filterCountry))) return item;
+           })
+        }
+        if (filterCity !== "") {
+            library = library.filter(item => {
+            if (this.renderfilterCity(item.destination).some(r => r.includes(filterCity))) return item;
+           })
+        }
+        if (filterFdate !== "") {
+            library = library.filter(item =>
+               item.dates.begindate.sstring.includes(filterFdate)
+            )
+        }
+        if (filterTdate !== "") {
+            library = library.filter(item =>
+               item.dates.enddate.sstring.includes(filterTdate)
+            )
+        }
+        library = _.chunk(library, perPage);
+        this.setState({
+            library,
+            currentPage: 1,
+            maxPage: library.length === 0 ? 1 : library.length,
+        });
+    };
+    renderfilterCountry(element){
+        let indents = [];
+        for (let i = 0; i < element.length; i++) {
+            indents.push(element[i].country.toLowerCase())
+            }
+        return (indents)
+    }
+    renderfilterCity(element){
+        let indents = [];
+        for (let i = 0; i < element.length; i++) {
+            indents.push(element[i].city.toLowerCase())
+        }
+        return (indents)
+    }
+    
+    handleChangeTourName = evt =>
+        this.setState(
+            {
+                filterTourName: evt.target.value.toLowerCase()
+            },
+            () => {
+                this.reorganiseLibrary();
+            }
+    )
+    handleChangeCountry = evt =>
+        this.setState(
+            {
+                filterCountry: evt.target.value.toLowerCase()
+            },
+            () => {
+                this.reorganiseLibrary();
+            }
+    )
+    handleChangeCity = evt =>
+        this.setState(
+            {
+                filterCity: evt.target.value.toLowerCase()
+            },
+            () => {
+                this.reorganiseLibrary();
+            }
+    )
+    handleChangeFdate = evt =>{
+        console.log(evt.target.getAttribute("data-value"))
+        this.setState(
+            {
+                filterFdate: evt.target.getAttribute("data-value")
+            },
+            () => {
+                this.reorganiseLibrary();
+            }
+    )
+    }
+    handleChangeTdate = evt =>
+        this.setState(
+            {
+                filterTdate: evt.target.getAttribute("data-value")
+            },
+            () => {
+                this.reorganiseLibrary();
+            }
+    )
+    // Previous Page
+     previousPage = (event) => {
+        this.setState({
+            currentPage: this.state.currentPage - 1,
+            });
+    };
+    // Next Page
+    nextPage = (event) => {
+        this.setState({
+            currentPage: this.state.currentPage + 1,
+        });
+    };
+    // handle per page
+    handlePerPage = (evt) =>
+        this.setState({
+            perPage: evt.target.value,
+        },() => this.reorganiseLibrary()
+    );
+    // handle render of library
+    renderLibrary = () => {
+        const { library, currentPage } = this.state;
+        if (!library || (library && library.length === 0)) {
+            return (
+                <tr className="nodata">
+                    <td colspan="8"> نتیجه ای یافت نشد!</td>
+                </tr>
+            );
+        }
+        return library[currentPage - 1].map((item, i) => (
+            <tr>
+                <td data-label="ردیف">{this.renderIndex(item.index)}</td>
+                <td data-label="نام تور" className="tour-name">{item.name}</td>
+                <td data-label="شهر مقصد">{this.renderCity(item.destination)}</td>
+                <td data-label="کشور مقصد">{this.renderCountry(item.destination)}</td>
+                <td data-label="مدت زمان تور">{item.staying}</td>
+                <td data-label="تاریخ شروع">{item.dates.begindate.sstring}<div className="font_11 mstring-date">({item.dates.begindate.mstring})</div></td>
+                <td data-label="تاریخ پایان">{item.dates.enddate.sstring}<div className="font_11 mstring-date">({item.dates.enddate.mstring})</div></td>
+                <td data-label="خرید آنلاین"><button 
+                    data-tourname={item.name}
+                    data-id={this.renderTourid(item)}
+                    data-begindateSstring={item.dates.begindate.sstring}
+                    data-begindateMstring={item.dates.begindate.mstring}
+                    data-enddateSstring={item.dates.enddate.sstring}
+                    data-enddateMstring={item.dates.enddate.mstring}
+                    data-type={this.renderType(item)}
+                    data-cityid={item.cityid}
+                    className="hvr-horizontal transition background-color_2 font_14 show_passengers">انتخاب</button></td>
+            </tr>
+        ));
+    };
+    render() {
+        const { library, currentPage, perPage, maxPage} = this.state;
+        return (
+                <section className="bc-main dir-rtl text-center list-container">
+                    <div class="list-tour-title">
+                      <h2>خرید آنلاین تور‎</h2>
+                    </div>
+                        <div class="table-container width_100">
+                            <table className="width_100 font_14">
+                                <tbody className="">
+                                    <tr><td colspan="8" className="text-right font_15">فیلتر براساس : </td></tr>
+                                </tbody>
+                                <tbody className="filter-row color_white">
+                                    <tr className="Basis_Date_Box">
+                                    <td className="color_white  background-color_1">-</td>
+                                    <td className="background-color_1"><input value={this.state.filterTourName} onChange={this.handleChangeTourName} placeholder="نام تور مورد نظر را وارد نمائید" className="font_12 width_100 placeholder_color" /></td>
+                                    <td className="background-color_1"><input value={this.state.filterCity} onChange={this.handleChangeCity} placeholder=" شهر مورد نظر را وارد نمائید" className="font_12 width_100 placeholder_color" /></td>
+                                    <td className="background-color_1"><input value={this.state.filterCountry} onChange={this.handleChangeCountry} placeholder="کشور مورد نظر را وارد نمائید" className="font_12 width_100 placeholder_color" /></td>
+                                    <td className="color_white background-color_1">-</td>
+                                    <td className="p-relative background-color_1 column-date">
+                                        <input type="text"  className="Basis_Date start_date placeholder_color" data-type="tour-list" data-active="0" data-cache="0" readonly="" placeholder="تاریخ شروع"/>
+                                        <input type="text"  value="بگرد" data-value={this.state.filterFdate} onClick={this.handleChangeFdate} readonly="" className="p-absolute filter-date"/>
+                                    </td>
+                                    <td className="p-relative background-color_1 column-date">
+                                        <input type="text" className="Basis_Date end_date placeholder_color"  data-type="tour-list" data-active="0" data-cache="0" readonly="" placeholder="تاریخ پایان" id="inp2"/>
+                                        <input type="text"  value="بگرد" data-value={this.state.filterTdate} onClick={this.handleChangeTdate} readonly="" className="p-absolute filter-date"/>
+                                    </td>
+                                    <td className="color_white background-color_1">-</td>
+                                </tr>
+                                </tbody>
+                                <tbody className="thead-row">
+                                    <td className="">ردیف</td>
+                                    <td >نام تور</td>
+                                    <td>شهر مقصد</td>
+                                    <td>کشور مقصد</td>
+                                    <td>مدت زمان تور</td>
+                                    <td>تاریخ شروع</td>
+                                    <td>تاریخ پایان</td>
+                                    <td>خرید آنلاین</td>
+                                </tbody>
+                                <tbody className="loading-List">
+                                    <tr><td colspan="8"><div id="fountainG"><div id="fountainG_1" class="fountainG"></div><div id="fountainG_2" className="fountainG"></div><div id="fountainG_3" className="fountainG"></div><div id="fountainG_4" className="fountainG"></div><div id="fountainG_5" className="fountainG"></div><div id="fountainG_6" className="fountainG"></div><div id="fountainG_7" className="fountainG"></div><div id="fountainG_8" className="fountainG"></div></div></td></tr>
+                                </tbody>
+                                <tbody className="section-tourList unvisible info-row">
+                                    {this.renderLibrary()}
+                                </tbody>
+                            </table>
+                            <div className="clr"></div>
+                        </div>
+                        <ul id="page-numbers">
+                            <li className="nexprevPage">
+                                {currentPage !== 1 && (
+                                    <button onClick={this.previousPage} className="FirstPage">
+                                        <i className="fa fa-backward"></i>
+                                    </button>
+                                )}
+                            </li>
+                            <li className="controlsPage activepaging FirstPage">
+                                {this.state.currentPage}
+                            </li>
+                            <li className="restControls">...</li>
+                            <li className="controlsPage LastPage">{this.state.maxPage}</li>
+                             <li className="nexprevPage">
+                                {currentPage < maxPage && (
+                                    <button onClick={this.nextPage} className="LastPage">
+                                        <i className="fa fa-forward"></i>
+                                    </button>
+                                )}
+                            </li>
+                        </ul>
+                </section>
+            );
+            }
+            renderCity(element){
+                let indents = [];
+                for (let i = 0; i < element.length; i++) {
+                    indents.push(<div>{element[i].city}</div>)
+                }
+                return (indents)
+            }
+            renderCountry(element){
+                let indents = [];
+                for (let i = 0; i < element.length; i++) {
+                    indents.push(<div>{element[i].country}</div>)
+                }
+                return (indents)
+            }
+            renderTourid(element){
+                if(element.basiscoreid == undefined){
+                    return element.id
+                }else{
+                    return element.basiscoreid
+                }
+            }
+            renderType(element){
+                if(element.basiscoreid == undefined){
+                    return 4
+                }else{
+                    return 10
+                }
+            }
+            renderIndex(element){
+                    return parseInt(element)+1
+                }
+            
+        }
+ReactDOM.render(<App />, document.getElementById("app"));
+</script>

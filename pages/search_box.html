@@ -1,0 +1,297 @@
+<basis core="external.fly.ws" source="cmsDbService2" procedurename="dbsource" name="db">
+    <member name="list-tour" method="cms"
+        query='{ "name": "db", "mid": "20", "member":[ {"type":"list", "name": "q","lid":"1",  "request": "tournames", "fromdate": "[##cms.cms.date##]" }]} '>
+    </member>
+
+</basis>
+<basis core="group" name="Delay">
+    <basis core="inlinesource" name="db">
+        <member name="tour" format="json" preview="">{"root":[##db.list-tour.result##]}</member>
+    </basis>
+    <div id="item-tour" class="width_90 border-radius">
+        <h2 class="color_1 text-center">رزرو آنلاین تور مسافرتی</h2>
+        <form method="post" action="/Tem2_Tour_Search.bc" class="form_search p-relative" id="tour_form">
+            <input type="hidden" name="persiancurrent" class="persiancurrent" value="">
+            <div class="p-relative width_100 search-content">
+                <i class="fas fa-arrow-down arrow-select p-absolute font_10 color_2"></i>
+                <i class="fa fa-map-marker-alt p-absolute color_2 icon-search"></i>
+                <select name="tourname" class="form-search-input cursor-pointer width_100 border-radius font_12"
+                    required="">
+                    <option value="">تور</option>
+                    <basis core="tree" datamembername="db.tour" idcol="id" nullvalue="null" parentidcol="ParentId">
+                        <face filter="field='tourid'">
+                            <option value="@value">
+                        </face>
+                        <face filter="field='tourname'">
+                            @Value
+                            </option>
+                        </face>
+                        <face filter="Type in ('array','object')">@child</face>
+                    </basis>
+                </select>
+            </div>
+            <div class="p-relative width_100 Basis_Date_Box search-content border-radius">
+                <div class="form_search-other float-right p-relative width_50" id="Fdate">
+                    <i class="fa fa-calendar-day p-absolute color_2 icon-search"></i>
+                    <input type="text" value="" class="Basis_Date start_date border-left font_12 width_100"
+                        onclick="Basis_Calendar(this,'[##cms.cms.date##]', 1)" data-active="0" data-cache="0"
+                        readonly="" placeholder="تاریخ رفت" name="fdate" autocomplete="off" required="">
+                    <input value="" class="mstring_date mstring_fdate" type="hidden" name="mstring_fdate">
+                </div>
+                <div class="form_search-other float-left p-relative width_50" id="Tdate">
+                    <i class="fa fa-calendar-day p-absolute color_2 icon-search"></i>
+                    <input type="text" value="" class="Basis_Date end_date nextCalOpening width_100 font_12"
+                        onclick="Basis_Calendar(this,'[##cms.cms.date##]', 1)" data-active="0" data-cache="0"
+                        readonly="" placeholder="تاریخ برگشت" name="tdate" autocomplete="off" required="" id="inp2">
+                    <input value="" class="mstring_date mstring_tdate" type="hidden" name="mstring_tdate">
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="p-relative width_100 search-content passenger-content border-radius cursor-pointer">
+                <i class="fa fa-user-friends p-absolute color_2 icon-search"></i>
+                <i class="fas fa-arrow-down arrow-select p-absolute font_10 color_2"></i>
+                <div class="Wrapper-CountPassenger transition width_100">
+                    <span class="count-room float-right text-center font_11">
+                        <div class="count">1</div>
+                        <div>اتاق</div>
+                    </span>
+                    <span class="count-adult float-right text-center font_11">
+                        <div class="count">1</div>
+                        <div>بزرگسال</div>
+                    </span>
+                    <span class="count-child float-right text-center font_11">
+                        <div class="count">0</div>
+                        <div>کودک</div>
+                    </span>
+                    <div class="clr"></div>
+                </div>
+
+                <div class="CountPassenger unvisible p-absolute font_12 width_100 border-radius CountPassenger_default">
+                    <div class="add-room cursor-pointer background-color_2 transition" onclick="AddRoom(this)">اضافه کردن اتاق</div>
+                    <div class="ShowRow">
+                        <div class="contentRoom">
+                            <div class="RoomRow color_1">اتاق 1</div>
+                            <div class="item-CountPassenger">
+                                <div class="first-part-CountPassenger width_40 float-right">بزرگسال (+12)</div>
+                                <div class="second-part-CountPassenger width_60 float-left">
+                                    <div class="passenger-button float-right plus-minus  text-left plus-minus-def"><span
+                                            class="plus-btn width_50 font_14 text-center">+</span></div>
+                                    <div class="passenger-button float-right text-center"><input type="text" name="_root.rooms__1.adultcount"
+                                            class="adult width_90 text-center font_13" maxlength="4000" readonly="" value="1"></div>
+                                    <div class="passenger-button float-right plus-minus  text-right plus-minus-def"><span
+                                            class="minus-btn width_50 font_14 text-center">-</span></div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                            <div class="item-CountPassenger">
+                                <div class="first-part-CountPassenger width_40 float-right">کودک (-12)</div>
+                                <div class="second-part-CountPassenger width_60 float-left">
+                                    <div class="passenger-button float-right plus-minus-ch  text-left plus-minus-ch-def"><span
+                                            class="plus-btn width_50 font_14 text-center">+</span></div>
+                                    <div class="passenger-button float-right text-center"><input type="text" class="child width_90 text-center font_13" maxlength="4000"
+                                            readonly="" value="0"></div>
+                                    <div class="passenger-button float-right plus-minus-ch  text-right plus-minus-ch-def"><span
+                                            class="minus-btn width_50 font_14 text-center">-</span></div>
+                                </div>
+                                <input type="hidden" value="0" class="childcountandage"
+                                    name="_root.rooms__1.childcountandage">
+                                <div class="clr"></div>
+                                <div class="section-select-age"></div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="confirm background-color_1 hvr-horizontal">تایید</div>
+                </div>
+                <div class="clr"></div>
+            </div>
+            <div class="p-relative width_100 text-center ">
+                <button class="hvr-horizontal transition submit-form-room background-color_2 font_14"
+                    type="submit">جستجو</button>
+            </div>
+        </form>
+
+    </div>
+</basis>
+<script type="text/javascript">
+    <basis core = "call" file = "Client_Basis_Calendar_js.inc"/>
+</script>
+<script  type="text/javascript">
+//<!----------------------------START JS SEARCHBOX ------------------------------>
+if ($(window).width() <= 750) {
+    $("#tour_form").attr('action', '/M_Tour_Search.bc')
+}
+function openNextCal(e) {
+    let returnDate = $("#tour_form").find('.nextCalOpening').val();
+    let departureDate = $("#tour_form").find('.start_date').val();
+    if(departureDate !== ''){
+        if (returnDate == '') {
+        $("#tour_form").find('.nextCalOpening').trigger("onclick");
+    }
+    }
+  
+};
+$(".form_search").submit(function (event) {
+    $(this).find("input[name=fdate],input[name=tdate]").each(function () {
+        if ($(this).val() == '' && !$(this).is(':disabled')) {
+            event.preventDefault();
+            $(this).css('border', '1px solid red')
+        }
+    })
+})
+$('.Wrapper-CountPassenger').click(function (e) {
+    $(this).closest('form').find('.CountPassenger').slideDown();
+});
+$(".confirm").click(function (e) {
+    $(this).closest(".CountPassenger").slideUp()
+})
+
+$(document).on('click', function (event) {
+     if (!$(event.target).closest('#ui-datepicker-div,.Wrapper-CountPassenger,.plus-minus,.plus-minus-ch,.createChildDropdown select,.add-room,.delete-room').length) {
+        $(".CountPassenger_default").slideUp();
+    }
+})
+$(".plus-minus-def").on("click", function () {
+    var button = $(this);
+    var oldVal = parseInt(button.closest(".item-CountPassenger").find('input').val());
+    var newVal = (button.text() == "+") ? oldVal + 1 : (oldVal > 0) ? oldVal - 1 : 0;
+    if (newVal >= 10) return;
+    if (newVal < 1) return;
+    button.closest(".item-CountPassenger").find('input').val(newVal);
+    button.closest("form").find('.count-adult .count').text(newVal)
+});
+$(".plus-minus-ch-def").on("click", function () {
+    var button = $(this);
+    var oldVal = parseInt(button.closest(".item-CountPassenger").find('input').val());
+    var newVal = (button.text() == "+") ? oldVal + 1 : (oldVal > 0) ? oldVal - 1 : 0;
+    if (newVal >= 5) return;
+    button.closest(".item-CountPassenger").find('input').val(newVal);
+    button.closest(".item-CountPassenger").find('.child').val(newVal);
+    button.closest("form").find('.count-child .count').text(newVal)
+    if (oldVal < newVal) {
+        button.closest(".item-CountPassenger").find('.section-select-age').append(createChildDropdown(newVal));
+    } else if (oldVal > newVal) {
+        destroyChildDropdown(button.closest(".item-CountPassenger").find('.section-select-age'), newVal);
+    }
+});
+var createChildDropdown = function (i) {
+    var $childDropdown = $('<div />', {
+        'class': 'createChildDropdown select-arrow p-relative float-right'
+    });
+    $childDropdown.append($('<label />', {
+        'for': 'childDropdown-' + i
+    }).text('سن کودک ' + i));
+    $childDropdown.append($('<select />'));
+    var options = ['تا 1 سال', '1 تا 2  ', '2 تا 3 ', '3 تا 4  ', '4 تا 5 ',
+        '5 تا 6 ', '6 تا 7 ', '7 تا 8 ', '8 تا 9 ', '9 تا 10 ',
+        '10 تا 11 ', '11 تا 12 '
+    ];
+    options.forEach(function (option, index) {
+        $childDropdown.find('select').append($('<option />').text(option).attr(
+            'value', index + 1));
+    });
+    return $childDropdown;
+};
+var destroyChildDropdown = function ($el, i) {
+    $el.find('div.createChildDropdown').get(i).remove();
+};
+$(".submit-form-room").click(function () {
+    var childcountandage = $(this).closest("form").find(".childcountandage").val();
+    if (childcountandage == "0,") {
+        $(this).closest("form").find(".childcountandage").val(0)
+    }
+    $(this).closest("form").find(".contentRoom").each(function () {
+        var childCount = $(this).find(".child").val();
+        var childAge = "";
+        $(this).find(".createChildDropdown select").each(function () {
+            childAge = childAge + ',' + $(this).val();
+        });
+        $(this).find(".childcountandage").val(childCount + childAge);
+    });
+});
+function AddRoom(element) {
+    $(element).closest("form").find('.count-child .count').text('0')
+    var sumAdult = 0;
+    var ad = 0;
+    var oldVal = $(element).closest("form").find('.count-room .count').text();
+    var newVal = parseInt(oldVal) + 1
+    if (newVal >= 5) return;
+    $(element).closest("form").find('.count-room .count').text(newVal)
+    $(element).closest("form").find(".ShowRow").empty()
+    for (i = 1; i <= newVal; i++) {
+        if (i == newVal) {
+            $(element).closest("form").find(".ShowRow").append(
+                '<div class="contentRoom"><div class="RoomRow color_1">اتاق ' + i +
+                ' <span class="delete-room float-left" onclick="DeleteRoom(this,' + i + ')">حذف</span></div><div class="item-CountPassenger"><div class="first-part-CountPassenger width_40 float-right">بزرگسال (+12)</div><div class="second-part-CountPassenger width_60 float-left"><div class="passenger-button float-right plus-minus  text-left plus-minus-def"><span class="plus-btn width_50 font_14 text-center">+</span></div><div class="passenger-button float-right text-center"><input type="text"  name="_root.rooms__' + i + '.adultcount" class="adult width_90 text-center font_13" maxlength="4000" readonly="" value="1"></div><div class="passenger-button float-right plus-minus  text-right plus-minus-def"><span class="minus-btn width_50 font_14 text-center">-</span></div></div><div class="clr"></div></div><div class="item-CountPassenger"><div class="first-part-CountPassenger width_40 float-right">کودک (-12)</div><div class="second-part-CountPassenger width_60 float-left"><div class="passenger-button float-right plus-minus-ch  text-left plus-minus-ch-def" data-type="1"><span class="plus-btn width_50 font_14 text-center">+</span></div><div class="passenger-button float-right text-center"><input type="text"  class="child width_90 text-center font_13" maxlength="4000" readonly="" value="0"></div><div class="passenger-button float-right plus-minus-ch  text-right plus-minus-ch-def" data-type="1"><span class="minus-btn width_50 font_14 text-center">-</span></div></div><input type="hidden" value="0" class="childcountandage" name="_root.rooms__' + i + '.childcountandage"><div class="clr"></div><div class="section-select-age"></div><div class="clr"></div></div></div>')
+        } else {
+            $(element).closest("form").find(".ShowRow").append(
+                '<div class="contentRoom"><div class="RoomRow color_1">اتاق ' + i +
+                ' </div><div class="item-CountPassenger"><div class="first-part-CountPassenger width_40 float-right">بزرگسال (+12)</div><div class="second-part-CountPassenger width_60 float-left"><div class="passenger-button float-right plus-minus  text-left plus-minus-def"><span class="plus-btn width_50 font_14 text-center">+</span></div><div class="passenger-button float-right text-center"><input type="text"  name="_root.rooms__' + i + '.adultcount" class="adult width_90 text-center font_13" maxlength="4000" readonly="" value="1"></div><div class="passenger-button float-right plus-minus  text-right plus-minus-def"><span class="minus-btn width_50 font_14 text-center">-</span></div></div><div class="clr"></div></div><div class="item-CountPassenger"><div class="first-part-CountPassenger width_40 float-right">کودک (-12)</div><div class="second-part-CountPassenger width_60 float-left"><div class="passenger-button float-right plus-minus-ch  text-left plus-minus-ch-def" data-type="1"><span class="plus-btn width_50 font_14 text-center">+</span></div><div class="passenger-button float-right text-center"><input type="text"  class="child width_90 text-center font_13" maxlength="4000" readonly="" value="0"></div><div class="passenger-button float-right plus-minus-ch  text-right plus-minus-ch-def" data-type="1"><span class="minus-btn width_50 font_14 text-center">-</span></div></div><input type="hidden" value="0" class="childcountandage" name="_root.rooms__' + i + '.childcountandage"><div class="clr"></div><div class="section-select-age"></div><div class="clr"></div></div></div>')
+        }
+
+    }
+    $(element).closest("form").find(".contentRoom").each(function () {
+        var adult = parseInt($(this).find(".adult").val())
+        ad += adult;
+        $(this).find(".plus-minus").on("click", function () {
+            var button = $(this);
+            var oldVal = parseInt(button.closest(".item-CountPassenger").find('input').val());
+            var newVal = (button.text() == "+") ? oldVal + 1 : (oldVal > 0) ? oldVal - 1 : 0;
+            if (newVal >= 10) return;
+            if (newVal < 1) return;
+            button.closest(".item-CountPassenger").find('input').val(newVal);
+            var adNew = 0;
+            var sumAdultNew = 0;
+            button.closest(".CountPassenger").find(".contentRoom").each(function () {
+                var adultNew = parseInt($(this).find(".adult").val())
+                adNew += adultNew;
+            })
+            sumAdultNew = parseInt(adNew)
+            button.closest("form").find(".count-adult .count").text(sumAdultNew)
+        });
+        $(this).find(".plus-minus-ch").on("click", function () {
+            var button = $(this);
+            var oldVal = parseInt(button.closest(".item-CountPassenger").find('input').val());
+            var newVal = (button.text() == "+") ? oldVal + 1 : (oldVal > 0) ? oldVal - 1 : 0;
+            if (newVal >= 5) return;
+            button.closest(".item-CountPassenger").find('input').val(newVal);
+            var sumChild = 0
+            var ch = 0;
+            button.closest(".CountPassenger").find(".contentRoom").each(function () {
+                var child = parseInt($(this).find(".child").val())
+                ch += child;
+            })
+            sumChild = parseInt(ch)
+            button.closest("form").find('.count-child .count').text(sumChild)
+            if (oldVal < newVal) {
+                button.closest(".item-CountPassenger").find('.section-select-age').append(createChildDropdown(newVal));
+
+            } else if (oldVal > newVal) {
+                destroyChildDropdown(button.closest(".item-CountPassenger").find('.section-select-age'), newVal);
+            }
+        });
+    })
+    sumAdult = parseInt(ad)
+    $(element).closest("form").find('.count-adult .count').text(sumAdult)
+}
+function DeleteRoom(element, i) {
+    var j = i - 1;
+    var x = i - 1;
+    if (j == 0) {
+        $(element).closest("form").find('.count-room .count').text('1')
+    } else {
+        $(element).closest("form").find('.count-room .count').text(j)
+    }
+    if (x == 1) {} else {
+        $(element).closest(".contentRoom").prev(".contentRoom").find('.RoomRow').append('<span class="delete-room float-left" onclick="DeleteRoom(this,' + j + ')">حذف</span>')
+    }
+    if (i !== 1) {
+        var NewvalAdult = parseInt($(element).closest("form").find('.count-adult .count').text()) - parseInt($(element).closest(".contentRoom").find(".adult").val())
+        $(element).closest("form").find('.count-adult .count').text(NewvalAdult)
+        var NewvalChild = parseInt($(element).closest("form").find('.count-child .count').text()) - parseInt($(element).closest(".contentRoom").find(".child").val())
+        $(element).closest("form").find('.count-child .count').text(NewvalChild)
+        $(element).closest(".contentRoom").remove()
+    }
+}
+//<!----------------------------END JS SEARCHBOX ------------------------------>
+</script>

@@ -1,0 +1,180 @@
+<!-- --------------------------------- contact ---------------------------------------------- -->
+
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="5" usedforid="8777">
+    <member name="info" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="11" lid="1">
+    <member name="persons" type="list" propertyid="2732,2739" />
+</basis>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-687250894"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-687250894');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>تماس با ما</title>
+    <meta name="Description" content="تماس با ما" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/css/fontawesome.css">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/css/aysham-master.css">
+    <script src="[##cms.cms.cdn##]/js/core.min.js"></script>
+    <!--js for menu-->
+    <script src="[##cms.cms.cdn##]/js/jquery-menu.js"></script>
+</head>
+
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKCM5DL" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <basis core="call" file="header.inc" />
+    <main>
+        <div class="loginRegister"></div>
+        <div id="show" class="mains">
+            <div class="banner-main mains about-page">
+                <div class="bc-main">
+                    <div class="breadcrumbs">
+                        <ul>
+                            <li><a href="/">خانه</a></li>
+                            <li><span>تماس با ما</span></li>
+                        </ul>
+                    </div>
+                    <div class="clr"></div>
+                </div>
+                <div class="title-list-main">
+                    <h1><span>تماس با آژانس مسافرتی آیشم</span></h1>
+                </div>
+            </div>
+            <div class="list-main mains">
+                <div class="bc-main">
+
+                    <div class="list-container mains">
+                        <div class="main-text mains ">
+
+
+                            <div class="contact-wrapp">
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="prpid=7999">
+                                        <div class="col-contact">
+                                            <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i><span>آدرس</span>
+                                            </p>
+                                            <p itemprop="@vocabulary">@answer</p>
+                                        </div>
+                                    </face>
+                                </basis>
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="prpid=8000">
+                                        <div class="col-contact">
+                                            <p><i class="fa fa-phone" aria-hidden="true"></i><span>تلفن </span></p>
+                                            <p itemprop="@vocabulary">@answer</p>
+                                        </div>
+                                    </face>
+                                </basis>
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="prpid=8393">
+                                        <div class="col-contact">
+                                            <p><i class="fa fa-fax" aria-hidden="true"></i><span>تلفکس </span></p>
+                                            <p itemprop="@vocabulary">@answer</p>
+                                        </div>
+                                    </face>
+                                </basis>
+                                <div class="col-contact">
+                                    <p><i class="fa fa-phone" aria-hidden="true"></i><span>تلفن </span></p>
+                                    <p itemprop="@vocabulary">22277790-021</p>
+                                </div>
+                                <div class="col-contact">
+                                    <p><i class="fa fa-phone" aria-hidden="true"></i><span>کارشناس فروش </span></p>
+                                    <p itemprop="@vocabulary">09900995462</p>
+                                </div>
+                                <div class="col-contact">
+                                    <p><i class="fa fa-phone" aria-hidden="true"></i><span>کارشناس فروش </span></p>
+                                    <p itemprop="@vocabulary">09100023864</p>
+                                </div>
+                                <div class="col-contact">
+                                    <p><i class="fa fa-envelope-o" aria-hidden="true"></i><span>کدپستی </span></p>
+                                    <p itemprop="@vocabulary"> 1546934317</p>
+                                </div>
+
+                                <basis core="print" datamembername="db.info">
+                                    <face filter="prpid=8001">
+                                        <div class="col-contact">
+                                            <p><i class="fa fa-at" aria-hidden="true"></i><span> ایمیل </span></p>
+                                            <p itemprop="@vocabulary"> @answer</p>
+                                        </div>
+                                    </face>
+                                </basis>
+                                <basis core="view" datamembername="db.info">
+                                    <face level="1" filter="prpid=8002">
+                                        <div class="col-contact">
+                                            <p><i class="fa fa-link" aria-hidden="true"></i><span
+                                                    class="web-link-title">وب سایت ها </span></p>
+                                            <p>@child</p>
+                                        </div>
+                                    </face>
+                                    <face level="2"> <a href="@answer" target="_blank" itemprop="@vocabulary">
+                                            @answer</a>
+                                    </face>
+                                </basis>
+                                <div class="follow-social">
+                                    <p>ما را در شبکه های اجتماعی دنبال کنید !</p>
+                                    <ul>
+                                        <li><a href="https://www.instagram.com/aysham.travel "><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/in/آژانس-هواپیمایی-آیشم-6b7901190"><i
+                                                    class="fab fa-linkedin-in"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="info-contact-container">
+                                <div class="map-container">
+                                    <iframe
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.6755696103933!2d51.4417246147485!3d35.758778133323524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e0422ab68d3e5:0x8981be88506ff3f8!2z2KLbjNi02YU!5e0!3m2!1sen!2sua!4v1593861677111!5m2!1sen!2sua"
+                                        width="380" height="480" frameborder="0" style="border:0;" allowfullscreen=""
+                                        aria-hidden="false" tabindex="0"></iframe>
+
+                                </div>
+                                <basis core="print" datamembername="db.persons">
+                                    <layout>
+                                        <div class="layout-persons-container">@child</div>
+                                    </layout>
+                                    <face>
+                                        <article class="group">
+                                            <figure class="img"><img src="/@image" width="310"
+                                                    height="253" alt="@title"></figure>
+                                            <header>
+                                                <h2 class="title">@title</h2>
+                                            </header>
+                                            <footer>
+                                                <p class="desc">@prp_2732</p>
+                                                <p class="desc">@prp_2739</p>
+                                            </footer>
+                                        </article>
+                                    </face>
+                                </basis>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="clr"></div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <basis core="call" file="footer.inc" />
+</body>
+
+</html>

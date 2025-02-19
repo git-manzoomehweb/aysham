@@ -1,0 +1,345 @@
+<basis core="dbsource" source="basiscore" mid="20" name="category" lid="1">
+    <member name="tour" type="tree" request="cat" parentid="0" order="date desc" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="20" name="tour" lid="1" catid="26335">
+    <member name="list" type="list" link="tour.bc" propertyid="10000504,8077,8181,8076" order="date desc" typeid="159" perpage="6" />
+</basis>
+
+<basis core="dbsource" source="basiscore" mid="1" name="article" lid="1" catid="33590">
+    <member name="list" type="list" link="article.bc"  propertyid="7244,7248,7249,7227,77320,8191,8190" order="date desc" typeid="159" perpage="5"/>
+ </basis>
+
+<basis core="dbsource" source="basiscore" mid="1" name="news" lid="1"  catid="26336" >
+  <member name="list" type="list" link="article.bc" propertyid="8189,7244,7249,8191,8190" typeid="159" perpage="2" order="date desc" />
+</basis>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Ads: 687250894 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-687250894"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-687250894');
+    </script>
+    <meta charset="utf-8">
+    <meta name="keywords"
+        content="آژانس آیشم مجری تور اروپا، تور طبیعت گردی، تور ایران گردی، تور یک روزه، تور اسپانیا، تور یونان، تور ایتالیا، تور فرانسه، تورمالدیو، تور سریلانکا، تور بالی، تور هند، تور آفریقا، تور قبرس، تور فیلیپین، تور ویتنام‎" />
+    <meta name="description"
+        content="آژانس آیشم مجری تور اروپا، تور طبیعت گردی، تور ایران گردی، تور یک روزه، تور اسپانیا، تور یونان، تور ایتالیا، تور فرانسه، تورمالدیو، تور سریلانکا، تور بالی، تور هند، تور آفریقا، تور قبرس، تور فیلیپین، تور ویتنام" />
+    <!--<meta name="enamad" content="440133113" />-->
+    <meta name="samandehi" content="951320032" />
+    <meta name="author" content="BasisCore">
+    <meta name="google-site-verification" content="NsJlKfTsTnhEs53QyJqjrldJutQRJiuRw8t4ucVPxqA" />
+    <title> آژانس آیشم مجری تور اروپا، تور طبیعت گردی، تور یک روزه، تور ایران گردی‎</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aysham</title>
+    <link type="text/css" rel="stylesheet" href="[##cms.cms.cdn##]/css/fontawesome.css"/>
+    <link type="text/css" rel="stylesheet" href="[##cms.cms.cdn##]/css/slider.css"/>
+    <link type="text/css" rel="stylesheet" href="[##cms.cms.cdn##]/css/aysham-master.css"/>
+    <link type="text/css" rel="stylesheet" href="[##cms.cms.cdn##]/css/calendar.css"/>
+     <script type="text/javascript" src="[##cms.cms.cdn##]/js/core.min.js"></script>
+
+   
+</head>
+
+<body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9WBC7Z"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+    <h1 style="position: absolute;opacity: 0;">تورهای خارجی</h1>
+    <basis core="call" file="header.inc" />
+    <main class="main-container">
+        <div class="clr"></div>
+        <section class="p-relative">
+            <div class="owl-carousel owl-7">
+                <section class="background_banner p-relative banner_1"></section>
+                <section class="background_banner p-relative banner_2"></section>
+                <section class="background_banner p-relative banner_3"></section>
+            </div>
+            <div class="bc-main p-absolute search-box-container">
+                <section class="search-box-contetn float-right width_40 dir-rtl p-relative">
+                </section>
+                <div class="clr"></div>
+            </div>
+        </section>
+        <basis core="call" file="tour-list.inc" />
+        <section id="categorytour" class="category-wrapper mains">
+            <div class="title-tour-category">
+                <p>مقاصد پر طرفدار</p>
+            </div>
+            <div class="box-category-tour">
+                <basis core="tree" dataMemberName="category.tour" idCol="catid" parentidCol="ParentID"
+                    nullvalue="26709">
+                    <layout>
+                        <div class="owl-carousel owl-3">
+                            @child
+                        </div>
+                    </layout>
+                    <face filter="link is null">
+                        <article class="col-tour-category">
+                            <figure>
+                                <a href="/tour-list.bc?catid=@catid"><img src="@image" width="360" height="260"
+                                        alt="@title"></a>
+                                <figcaption>
+                                    <a href="/tour-list.bc?catid=@catid">
+                                        <h2>@title</h2>
+                                        <span>27 تور</span>
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </face>
+                    <face>
+                        <article class="col-tour-category">
+                            <figure>
+                                <a href="/@link"><img src="@image" width="360" height="260" alt="@title"></a>
+                                <figcaption>
+                                    <a href="/@link">
+                                        <h2>@title</h2>
+                                        <span>27 تور</span>
+                                    </a>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </face>
+                </basis>
+            </div>
+        </section>
+        <section class="list-tour-wrapper mains">
+            <div class="bc-main">
+                <div class="list-tour-title">
+                    <p>تورهای ویژه</p>
+                </div>
+                <div class="box-list-tour">
+
+                    <basis core="list" datamembername="tour.list">
+                        <face filter="link is null">
+                            <article class="col-tour-list">
+                                <div class="inner-tour-list">
+                                    <figure>
+                                        <a href="/tour.bc?id=@id"><img src="@type_159" width="370" height="270"
+                                                alt="@title">
+                                            <p>@prp_8181</p>
+                                        </a>
+                                    </figure>
+                                    <div class="desc-tour-list"><a href="/tour.bc?id=@id">
+                                            <h2 class="title-tour">@title</h2>
+                                            <p><i class="fas fa-clock"></i>@prp_8076</p>
+                                            <p><i class="fas fa-calendar-alt"></i>@prp_8077</p>
+                                            <span> <i class="fas fa-plane"></i>@prp_10000504</span>
+                                            <span class="more">مشاهده</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </face>
+                        <face>
+                            <article class="col-tour-list">
+                                <div class="inner-tour-list">
+                                    <figure>
+                                        <a href="/@link"><img src="@type_159" width="370" height="270" alt="@title">
+                                            <p>@prp_8181</p>
+                                        </a>
+                                    </figure>
+                                    <div class="desc-tour-list"><a href="/@link">
+                                            <h2 class="title-tour">@title</h2>
+                                            <p><i class="fas fa-clock"></i>@prp_8076</p>
+                                            <p><i class="fas fa-calendar-alt"></i>@prp_8077</p>
+                                            <span> <i class="fas fa-plane"></i>@prp_10000504</span>
+                                            <span class="more">مشاهده</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </face>
+                    </basis>
+
+
+                    <div class="more-all-tours"><a href="/">مشاهده همه تورها</a></div>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </section>
+        <section class="about-aysham-wrapper mains">
+            <div class="bc-main">
+                <div class="about-aysham-title">
+                    <p>درباره آژانس خدمات مسافرتی آیشم</p>
+                </div>
+                <div class="main-text">
+                    <div class="about-aysham-text">
+                        <p>آژانس خدمات مسافرتی آیشم با کادری مجرب و تیمی متشکل از کارمندان خبره و مسلط و همچنین مدیریتی
+                            که
+                            سالها در سمت گرداننده شرکت های خدمات مسافرتی به نام و بزرگ در تهران بوده، کار خود را شروع
+                            کرده و
+                            اهدافی را در این مسیر دنبال میکند که مهمترین آنها اجرای تورهای لوکس در مسیرهای جدید و جذاب
+                            با
+                            اهداف خاص می باشد تا شاید بتوان آنها را جاگزین مسیرهای کسل کننده و تکراری امروزی کرد.</p>
+                        <p>لذا کارکنان مجرب این شرکت خدمات مسافرتی مصمم هستند تا خاطرات و لحظاتی خوش را برای شما به
+                            ارمغان
+                            آورند و هیچ چیز جز لبخند شما مسافرین عزیز و رضایت کامل شما برای ما اهمیت ندارد و تمام توان
+                            خود
+                            را برای ایجاد سفرهایی به یاد ماندنی برای شما به کار خواهیم برد. </p>
+                        <p>در ادامه لیست خدمات و مجوزهای آژانس آیشم آورده شده است:</p>
+                        <p><i class="fas fa-check"></i>مجری مستقیم تورهای خارجی</p>
+                        <p><i class="fas fa-check"></i>اجرای تورهای اروپایی</p>
+                        <p><i class="fas fa-check"></i>رزرو و فروش بلیط داخلی و خارجی</p>
+                        <p><i class="fas fa-check"></i>رزرو هتل های خارجی سراسر دنیا</p>
+                        <p><i class="fas fa-check"></i>اخذ ویزا</p>
+                        <p><i class="fas fa-check"></i>صدور بیمه مسافرتی</p>
+                        <p><i class="fas fa-check"></i>خدمات رزرواسیون آنلاین </p>
+                    </div>
+                    <div class="contact-aysham-button">
+                        <a href="/تماس-با-ما"> ارتباط با آیشم <img src="[##cms.cms.cdn##]/images/contact-button-ic.png" width="24"
+                                height="24" alt="contact us"></a>
+                    </div>
+                </div>
+                <div class="clr"></div>
+            </div>
+        </section>
+        <section class="list-article-wrapper mains">
+            <div class="bc-main">
+                <div class="desc-article-right">
+                    <div class="list-article-title">
+                        <h3>جاذبه های گردشگری</h3>
+                    </div>
+                    <div class="text-desc-article">
+                        <p>با آژانس مسافرتی آیشم از زیباترین جاذبه های گردشگری دنیا دیدن فرمایید.</p>
+                    </div>
+                </div>
+                <div class="list-article-left">                    
+                        <basis core="list" datamembername="article.list">
+                            <layout>
+                                <div class="owl-carousel owl-4 inner-list-article">
+                                    @child
+                                </div>
+                            </layout>
+                            <face filter="link is null">
+                                <article class="col-article-list">
+                                    <div class="inner-article-list">
+                                        <figure>
+                                            <a href="/article.bc?id=@id">
+                                                <img src="@type_159" alt="@title" width="415" height="250">
+                                            </a>
+                                        </figure>
+                                        <div class="desc-article-list"><a href="/article.bc?id=@id">
+                                                <h2 class="title-tour">@title</h2>
+                                                <p class="art-txt">@prp_7244</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article>
+                            </face>
+                            <face>
+                                <article class="col-article-list">
+                                    <div class="inner-article-list">
+                                        <figure>
+                                            <a href="/@link">
+                                                <img src="@type_159" alt="@title" width="415" height="250">
+                                            </a>
+                                        </figure>
+                                        <div class="desc-article-list"><a href="/@link">
+                                                <h2 class="title-tour">@title</h2>
+                                                <p class="art-txt">@prp_7244</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </article>
+                            </face>
+                        </basis>
+                </div>
+            </div>
+        </section>
+        <section class="list-news-wrrapper mains">
+            <div class="bc-main">
+                <div class="right-side-news">
+                    <h3 class="title-news">آخرین اخبار گردشگری</h3>
+                    <basis core="list" datamembername="news.list">
+                        <face filter="link is null">
+                            <article class="col-news">
+                                <figure class="img-news"><a href="/article.bc?id=@id"><img src="@type_159" width="115" height="110"
+                                            alt="@title"></a>
+                                </figure>
+                                <div class="desc-news">
+                                    <a href="/article.bc?id=@id">
+                                        <h3>@title</h3>
+                                    </a>
+                                    <p class="lmt-txt">@prp_8189 @prp_7244</p>
+                                    <div class="date-news">
+                                        <span>@prp_7249  @prp_8190</span>
+                                        <a href="/article.bc?id=@id"> <span><i class="fas fa-arrow-left"></i></span></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </face>
+                        <face>
+                            <article class="col-news">
+                                <figure class="img-news"><a href="/@link"><img src="@type_159" width="115" height="110"
+                                            alt="@title"></a>
+                                </figure>
+                                <div class="desc-news">
+                                    <a href="/@link">
+                                        <h3>@title</h3>
+                                    </a>
+                                    <p class="lmt-txt">@prp_8189 @prp_7244 </p>
+                                    <div class="date-news">
+                                        <span>@prp_7249 @prp_8190</span>
+                                        <a href="/@link"> <span><i class="fas fa-arrow-left"></i></span></a>
+                                    </div>
+                                </div>
+                            </article>
+                        </face>
+                    </basis>                                      
+                </div>
+                <div class="left-side-newsletter">
+                    <div class="contact-aysham">
+                        <p class="title-contact">ارتباط با ما</p>
+                        <p><i class="fas fa-map-marker-alt"></i> میرداماد، بین میدان مادر و شریعتی، پلاک46، طبقه 2 شرقی</p>
+                        <p><a href="tel:02122277790"><i class="fa fa-phone"></i>021-22277790</a></p>
+                    </div>
+                    <div class="newsletter-box">
+                        <p class="title-newsletter">عضویت در خبرنامه</p>
+                        <form action="/newsletter-get.bc">
+                            <input type="email" name="email" placeholder="ایمیل خود را وارد کنید" required>
+                            <button type="submit"><i class="fas fa-chevron-left"></i></button>
+                        </form>
+                        <p class="text-newsletter">برای دریافت آخرین اخبار گردشگری در خبرنامه ما عضو شوید.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <basis core="call" file="Client_Basis_Calendar.inc" />
+    </main>
+   
+    <basis core="call" file="footer.inc" />
+    <!--js for slider-->
+    <script type="text/javascript" src="[##cms.cms.cdn##]/js/slider.js"></script>
+    <!--js for menu-->
+    <script type="text/javascript" src="[##cms.cms.cdn##]/js/jquery-menu.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".search-box-contetn").load('/search_box.bc')
+            $(".art-txt").each(function (i) {
+                len = $(this).text().length;
+                if (len > 100) {
+                    $(this).text($(this).text().substr(0, 100) + '...');
+                }
+            });
+            $(".lmt-txt").each(function (i) {
+                len = $(this).text().length;
+                if (len > 130) {
+                    $(this).text($(this).text().substr(0, 130) + '...');
+                }
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
