@@ -1,0 +1,278 @@
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+  <member name="info" type="view"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tours1">
+  <member name="cat" type="tree" request="cat" parentid="128289" order="[##cms.Host.article-cat-order##]"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="tours2">
+  <member name="cat" type="tree" request="cat" parentid="125702" order="[##cms.Host.article-cat-order##]"></member>
+</basis>
+<header id="header-resize" class="w-ful bg-white flex flex-col justify-center items-center gap-2.5 max-xl:h-auto max-xl:leading-normal">
+  <div class="w-full px-6 py-3 bg-red-600 justify-center items-center gap-2.5 inline-flex overflow-hidden">
+    <div class="text-right text-white text-2xl">جایگاه بنر تبلیغاتی</div>
+  </div>
+  <div class="header-inner relative w-[1280px] m-auto mb-2 max-xl:w-full max-xl:px-3 max-lg:px-0 max-xl:float-right">
+    <section class="hidden w-full mx-auto bg-white relative z-10 max-xl:block max-xl:px-3">
+      <div class="w-full dir-ltr">
+          <div class="block w-1/2 float-left text-left">
+              <a href="/" aria-label="aysham-m-logo" class="float-left">
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/M_logo.png" alt="aysham" width="69" height="52">
+              </a>
+          </div>
+
+      </div>
+  </section>
+  <div class="hidden text-primary-800 text-xs pt-3 text-center w-full cursor-pointer max-xl:text-sm max-xl:block" onclick="openHamburgerMenu(this)">
+    <svg class="w-[30px] h-[30px] align-middle absolute top-4 right-3 z-50" viewBox="0 0 30 31" xmlns="http://www.w3.org/2000/svg"><path d="m25 25.5h-20c-0.69 0-1.25-0.5588-1.25-1.25s0.56-1.25 1.25-1.25h20c0.69 0 1.25 0.5588 1.25 1.25s-0.56 1.25-1.25 1.25z" clip-rule="evenodd" fill="#6E6E6E" fill-rule="evenodd"/><path d="m25 8h-20c-0.69 0-1.25-0.55875-1.25-1.25s0.56-1.25 1.25-1.25h20c0.69 0 1.25 0.55875 1.25 1.25s-0.56 1.25-1.25 1.25z" clip-rule="evenodd" fill="#6E6E6E" fill-rule="evenodd"/><path d="m25 16.75h-20c-0.69 0-1.25-0.5588-1.25-1.25s0.56-1.25 1.25-1.25h20c0.69 0 1.25 0.5588 1.25 1.25s-0.56 1.25-1.25 1.25z" clip-rule="evenodd" fill="#6E6E6E" fill-rule="evenodd"/></svg>        
+  </div>
+    <div id="menu-box" class="w-full relative h-[48px] leading-[48px] transition-all duration-700 max-xl:w-full max-xl:h-full max-xl:bg-white max-xl:max-w-7xl max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:left-0 max-xl:z-50 max-xl:invisible max-xl:translate-x-[150%] max-xl:px-3">
+      <div onclick="closeHamburgerMenu(this)" class="px-4 py-2 hidden max-xl:block max-xl:cursor-pointer absolute top-0 right-0 w-full">
+        <a href="/" aria-label="aysham" class="block h-auto float-right dir-rtl"><img class="align-middle" loading="lazy" src="[##cms.cms.cdn##]/images/M_logo.png" width="69" height="52" alt="aysham"/></a>
+        <svg class="close-hamburger-menu float-left mt-[15px]" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns=""><path d="M6.70714 5.29292C6.31663 4.90238 5.68346 4.90236 5.29292 5.29286C4.90238 5.68337 4.90236 6.31654 5.29286 6.70708L10.5858 12.0005L5.29384 17.2929C4.90333 17.6835 4.90336 18.3166 5.2939 18.7071C5.68444 19.0976 6.3176 19.0976 6.70811 18.7071L12 13.4148L17.2919 18.7071C17.6824 19.0976 18.3156 19.0976 18.7061 18.7071C19.0966 18.3166 19.0967 17.6835 18.7062 17.2929L13.4142 12.0005L18.7071 6.70708C19.0976 6.31654 19.0976 5.68337 18.7071 5.29286C18.3165 4.90236 17.6834 4.90238 17.2929 5.29292L12 10.5862L6.70714 5.29292Z" fill="#000"></path></svg>
+    </div>
+    <a href="/" aria-label="aysham" class="block float-right ml-8 h-auto max-xl:hidden"><img class="align-middle" loading="lazy" src="[##cms.cms.cdn##]/images/logo.png" width="69" height="52" alt="aysham"/></a>
+    <nav class="float-right text-right dir-rtl max-xl:fixed max-xl:top-[180px] max-xl:left-0 max-xl:right-0 max-xl:overflow-y-scroll max-xl:h-calc-hamburgermenu max-xl:px-3 max-xl:w-full max-xl:mx-auto">
+      <ul class="justify-start items-center gap-[43px] flex max-xl:block">
+          <basis core="tree" datamembername="tours1.cat" idcol="catid" parentidcol="parentid" nullvalue="128289">
+              <layout>
+                <li class="text-right text-primary-900 text-base font-normal relative max-xl:block max-xl:w-ful max-lg:mx-0 max-xl:mx-2 max-xl:border-b max-xl:border-solid max-xl:border-zinc-100 max-xl:leading-[48px] max-xl:h-auto max-xl:min-h-[48px]">
+                  <div onclick="openParentdropDown(this)" data-dropdown-toggle="dropdownNavbar" class="toggleSubMenuBox cursor-pointer flex items-center justify-between w-full md:p-0 md:w-auto group max-xl:h-full"><span class="text-right text-primary-900 text-base font-normal group-hover:text-green-600">تور نوروز 1404</span>
+                      <svg class="arrow-icon-menu inline-block align-middle mr-2.5 mt-2 max-xl:ml-3" fill="none" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.414 8.2501-8.414 8.414-8.414-8.414 1.414-1.414 7 7 7-7 1.414 1.414z" clip-rule="evenodd" fill="#000" fill-rule="evenodd"/></svg>
+                    </div>
+                    <div class="dropdownmenu-parent dropdownmenu absolute cursor-pointer hidden group-hover/firstlevel:block z-10 top-[100%] font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 max-xl:shadow-none max-xl:w-full max-xl:bg-inherit max-xl:relative max-lg:static:w-full">
+                        <ul class="py-2 text-sm text-primary-900 divide-y divide-gray-100 rounded-lg shadow w-44 max-lg:w-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                          @child
+                        </ul>
+                    </div>
+                </li>
+              </layout>
+              <face level="end" filter="link is null">
+                <li class="relative">
+                  <a href="/tour-list.bc?catid=@catid" class="block text-primary-900 px-4 py-2 hover:text-green-600 text-right max-lg:w-full">@title</a>
+                </li>
+              </face>
+              <face level="end">
+                <li class="relative">
+                  <a href="@link" class="block text-primary-900 px-4 py-2 hover:text-green-600 text-right max-lg:w-full">@title</a>
+                </li>
+              </face>
+              <face level="1">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </li>
+              </face>
+              <face level="2">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+              <face level="3">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+              <face level="4">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+          </basis>
+          <basis core="tree" datamembername="tours2.cat" idcol="catid" parentidcol="parentid" nullvalue="125702">
+              <layout>
+                <li class="text-right text-primary-900 text-base font-normal relative max-xl:block max-xl:w-ful max-lg:mx-0 max-xl:mx-2 max-xl:border-b max-xl:border-solid max-xl:border-zinc-100 max-xl:leading-[48px] max-xl:h-auto max-xl:min-h-[48px]">
+                  <div onclick="openParentdropDown(this)" data-dropdown-toggle="dropdownNavbar" class="toggleSubMenuBox cursor-pointer flex items-center justify-between w-full md:p-0 md:w-auto group max-xl:h-full"><span class="text-right text-primary-900 text-base font-normal group-hover:text-green-600">تور های خارجی</span>
+                      <svg class="arrow-icon-menu inline-block align-middle mr-2.5 mt-2 max-xl:ml-3" fill="none" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m20.414 8.2501-8.414 8.414-8.414-8.414 1.414-1.414 7 7 7-7 1.414 1.414z" clip-rule="evenodd" fill="#000" fill-rule="evenodd"/></svg>
+                    </div>
+                    <div class="dropdownmenu-parent dropdownmenu absolute cursor-pointer hidden group-hover/firstlevel:block z-10 top-[100%] font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 max-xl:shadow-none max-xl:w-full max-xl:bg-inherit max-xl:relative max-lg:static:w-full">
+                        <ul class="py-2 text-sm text-primary-900 divide-y divide-gray-100 rounded-lg shadow w-44 max-lg:w-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                          @child
+                        </ul>
+                    </div>
+                </li>
+              </layout>
+              <face level="end" filter="link is null">
+                <li class="relative">
+                  <a href="/tour-list.bc?catid=@catid" class="block text-primary-900 px-4 py-2 hover:text-green-600 text-right max-lg:w-full">@title</a>
+                </li>
+              </face>
+              <face level="end">
+                <li class="relative">
+                  <a href="@link" class="block text-primary-900 px-4 py-2 hover:text-green-600 text-right max-lg:w-full">@title</a>
+                </li>
+              </face>
+              <face level="1">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </li>
+              </face>
+              <face level="2">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+              <face level="3">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+              <face level="4">
+                <li class="relative">
+                  <div class="block text-primary-900 cursor-pointer px-3 py-2 hover:text-green-600 text-right max-xl:px-0"
+                      onclick="opendropDown(this)">
+                      <span>
+                        @title
+                      </span>
+                      <svg class="arrow-icon-menu float-left w-2.5 h-2.5 ms-2.5 rotate-90 max-lg:rotate-0 inline-block mt-1 max-xl:ml-[19px]"
+                          aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 10 6">
+                          <path stroke="currentColor" stroke-linecap="round"
+                              stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                      </svg>
+                  </div>
+                  <div class="">
+                    <ul class="dropdownmenu cursor-pointer scroll-height group-hover/secondlevel:block hidden absolute right-full top-0 py-2 text-sm z-10  font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44   max-lg:static max-lg:w-full max-lg:right-full max-xl:shadow-none" aria-labelledby="dropdownLargeButton">
+                      @child
+                    </ul>
+                  </div>
+                  
+              </face>
+          </basis>
+        <li class="max-xl:block max-xl:w-ful max-xl:mx-2 max-lg:mx-0 max-xl:border-b max-xl:border-solid max-xl:border-zinc-100 max-xl:h-[48px] max-xl:leading-[48px]">
+          <a class="text-right text-primary-900 text-base font-normal hover:text-green-600" href="visa-services">مدارک ویزا</a>
+        </li>
+        <li class="max-xl:block max-xl:w-ful max-xl:mx-2 max-lg:mx-0 max-xl:h-[48px] max-xl:leading-[48px]">
+          <a class="text-right text-primary-900 text-base font-normal hover:text-green-600" href="تماس-با-ما">ارتباط با ما</a>
+        </li>
+      </ul>
+     </nav>
+     <div class="justify-end items-center gap-3 flex max-xl:block max-xl:mt-[80px]">
+      <div class="justify-start items-center gap-2 flex max-xl:float-right">
+          <basis core="view" datamembername="db.info">
+              <face filter="prpID=8000">
+                  <a href="tel:@answer" class="h-7 text-right text-primary-900 text-base  leading-normal hover:text-green-600 cursor-pointer">@answer</a>
+                  <img loading="lazy" src="[##cms.cms.cdn##]/images/header-call-icon.png" width="48" height="48" alt="header-call-icon" />
+              </face>
+          </basis>
+      </div>
+      <basis core="print" datamembername="db.info">
+          <face filter="prpID=91451 and text='واتس اپ'"><a href="@largetext" aria-label="whatsapp" rel="noopener" class="h-[48px] leading-[48px] hover:bg-green-200 rounded max-xl:float-left"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_759)"><mask id="mask0_131_759" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48"><path d="M48 0H0V48H48V0Z" fill="white"/></mask><g mask="url(#mask0_131_759)"><path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="white"/><path d="M32.1521 15.3158C30.155 13.2961 27.5016 12.057 24.671 11.822C21.8403 11.5872 19.0191 12.3721 16.7164 14.035C14.4137 15.698 12.7815 18.1294 12.1143 20.8903C11.4472 23.6512 11.7891 26.5597 13.0784 29.0905L11.8153 35.2232C11.8018 35.2844 11.8013 35.3478 11.8137 35.4093C11.8262 35.4708 11.8515 35.5289 11.8879 35.58C11.94 35.6574 12.0145 35.717 12.1014 35.7508C12.1883 35.7847 12.2835 35.7912 12.3742 35.7695L18.3742 34.3453C20.8981 35.6008 23.7857 35.9199 26.5229 35.2459C29.2602 34.5719 31.6693 32.9485 33.3218 30.6646C34.9743 28.3808 35.7627 25.5847 35.5468 22.774C35.3309 19.9634 34.1246 17.3205 32.1426 15.3158H32.1521ZM30.2763 30.2747C28.8951 31.6535 27.1166 32.5647 25.1906 32.8802C23.2648 33.1956 21.2884 32.8996 19.5395 32.0337L18.6995 31.6169L15.0142 32.4884V32.4411L15.791 28.7242L15.3806 27.9158C14.4863 26.1622 14.1705 24.1703 14.4786 22.226C14.7867 20.2817 15.7027 18.485 17.0953 17.0937C18.8438 15.347 21.2142 14.3659 23.6858 14.3659C26.1574 14.3659 28.5278 15.347 30.2763 17.0937L30.3174 17.1506C32.0432 18.9028 33.0066 21.2661 32.9977 23.7256C32.9889 26.185 32.0084 28.5413 30.27 30.2811L30.2763 30.2747Z" fill="#181146"/><path d="M29.9496 27.5723C29.498 28.2828 28.7812 29.1512 27.8874 29.3691C26.3085 29.7481 23.9053 29.3691 20.8959 26.587L20.858 26.5523C18.2401 24.1081 17.5453 22.0712 17.7001 20.4575C17.7917 19.5386 18.5559 18.7112 19.2001 18.1681C19.3025 18.0817 19.4237 18.0205 19.554 17.9894C19.6843 17.9582 19.8201 17.958 19.9505 17.9887C20.081 18.0193 20.2024 18.0801 20.3051 18.1661C20.4078 18.2521 20.4891 18.3609 20.5422 18.4839L21.5117 20.6755C21.575 20.8165 21.5987 20.9722 21.5803 21.1257C21.562 21.2792 21.5022 21.4249 21.4074 21.547L20.9149 22.1786C20.8124 22.3097 20.7515 22.4684 20.7396 22.6343C20.7278 22.8002 20.7657 22.9659 20.8485 23.1102C21.3165 23.7999 21.8763 24.4225 22.5127 24.9607C23.1974 25.6196 23.9739 26.1759 24.818 26.6123C24.9721 26.6744 25.1411 26.6892 25.3036 26.6549C25.4661 26.6206 25.6148 26.5387 25.7307 26.4197L26.2959 25.845C26.4034 25.7292 26.5409 25.6456 26.6931 25.6032C26.8452 25.5609 27.0061 25.5615 27.158 25.605L29.4632 26.2649C29.5939 26.3021 29.714 26.3695 29.8137 26.4616C29.9134 26.5538 29.9901 26.6682 30.0374 26.7955C30.0848 26.9228 30.1014 27.0595 30.0863 27.1944C30.071 27.3293 30.0241 27.4588 29.9496 27.5723Z" fill="#181146"/></g></g><defs><clipPath id="clip0_131_759"><rect width="48" height="48" fill="white"/></clipPath></defs></svg></a></face>
+          <face filter="prpID=91451 and text='اینستاگرام'"><a href="@largetext" aria-label="instagram" rel="noopener" class="h-[48px] leading-[48px] hover:bg-green-200 rounded max-xl:float-left"><svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_131_749)"><path d="M48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24Z" fill="white"/><path d="M29.683 11.3682H18.3146C16.472 11.3682 14.7049 12.1001 13.402 13.403C12.0991 14.7059 11.3672 16.473 11.3672 18.3155V29.684C11.3672 31.5265 12.0991 33.2936 13.402 34.5965C14.7049 35.8994 16.472 36.6313 18.3146 36.6313H29.683C31.5255 36.6313 33.2926 35.8994 34.5955 34.5965C35.8984 33.2936 36.6303 31.5265 36.6303 29.684V18.3155C36.6303 16.473 35.8984 14.7059 34.5955 13.403C33.2926 12.1001 31.5255 11.3682 29.683 11.3682ZM34.4198 28.6861C34.4198 30.207 33.8156 31.6657 32.7402 32.7411C31.6647 33.8166 30.206 34.4208 28.6851 34.4208H19.3125C17.7915 34.4208 16.3329 33.8166 15.2574 32.7411C14.1819 31.6657 13.5777 30.207 13.5777 28.6861V19.3134C13.5777 17.7925 14.1819 16.3338 15.2574 15.2584C16.3329 14.1829 17.7915 13.5787 19.3125 13.5787H28.6851C30.206 13.5787 31.6647 14.1829 32.7402 15.2584C33.8156 16.3338 34.4198 17.7925 34.4198 19.3134V28.6861Z" fill="#181146"/><path d="M28.6058 19.44L28.5458 19.38L28.4953 19.3295C27.3013 18.1396 25.6841 17.4719 23.9985 17.4727C23.1472 17.4784 22.3055 17.6519 21.5213 17.9831C20.7371 18.3143 20.0259 18.7968 19.4282 19.4029C18.8305 20.0091 18.3582 20.7271 18.0381 21.5159C17.718 22.3047 17.5564 23.1488 17.5627 24C17.5614 25.7276 18.2424 27.3857 19.4574 28.6137C20.0526 29.2161 20.7618 29.6939 21.5436 30.0192C22.3255 30.3446 23.1643 30.5109 24.0111 30.5084C25.2813 30.4818 26.5163 30.0861 27.5655 29.3696C28.6148 28.6531 29.4328 27.6468 29.9199 26.4734C30.407 25.3 30.5421 24.0102 30.3088 22.7613C30.0755 21.5124 29.4838 20.3584 28.6058 19.44ZM23.9985 28.2821C23.1491 28.294 22.3154 28.053 21.6033 27.5898C20.8913 27.1266 20.3331 26.462 19.9998 25.6807C19.6665 24.8994 19.5731 24.0366 19.7315 23.202C19.8898 22.3675 20.2929 21.5989 20.8893 20.994C21.4857 20.3891 22.2485 19.9753 23.0808 19.8051C23.913 19.635 24.777 19.7162 25.563 20.0385C26.3489 20.3607 27.0213 20.9095 27.4945 21.6149C27.9678 22.3203 28.2205 23.1506 28.2206 24C28.2247 24.5585 28.1188 25.1123 27.9088 25.6298C27.6989 26.1473 27.389 26.6183 26.9969 27.016C26.6048 27.4137 26.1381 27.7302 25.6237 27.9474C25.1092 28.1647 24.5569 28.2784 23.9985 28.2821Z" fill="#181146"/><path d="M32.3448 17.1724C32.3464 17.375 32.3081 17.576 32.232 17.7638C32.1559 17.9516 32.0435 18.1226 31.9012 18.2669C31.759 18.4112 31.5896 18.526 31.4029 18.6048C31.2162 18.6836 31.0158 18.7248 30.8132 18.7261C30.6123 18.726 30.4133 18.686 30.2279 18.6085C30.0426 18.531 29.8744 18.4174 29.7332 18.2745C29.5193 18.0574 29.3737 17.7823 29.3147 17.4833C29.2556 17.1843 29.2856 16.8746 29.4009 16.5925C29.5163 16.3104 29.7119 16.0683 29.9635 15.8964C30.2151 15.7244 30.5116 15.63 30.8163 15.625C31.173 15.6249 31.5184 15.7501 31.7921 15.9787L31.8237 16.0103C31.8746 16.0517 31.9212 16.0983 31.9627 16.1492L31.9974 16.1871C32.2234 16.4656 32.3462 16.8137 32.3448 17.1724Z" fill="#181146"/></g><defs><clipPath id="clip0_131_749"><rect width="48" height="48" fill="white"/></clipPath></defs></svg></a></face>
+      </basis>
+    </div>
+    </div>
+  </div>
+</header>
