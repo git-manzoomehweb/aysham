@@ -1,0 +1,17 @@
+<basis core="dbsource" source="basiscore" mid="20" name="db" lid="1">
+    <member name="footer-tour-list" type="tree" request="cat" parentid="[##cms.query.catid##]" preview="" />
+</basis>
+
+<basis core="tree" datamembername="db.footer-tour-list" idcol="catid" parentidcol="parentid" nullvalue="[##cms.query.catid##]">
+    <layout><ul class="w-full py-8 grid grid-cols-7 gap-6 dir-rtl relative max-xl:grid-cols-1 max-xl:gap-y-2">@child</ul></layout>
+    <face filter="link is null">
+        <li class="w-[160px] h-[50px] bg-white rounded-lg text-center overflow-hidden max-xl:m-auto">
+            <a href="tour-list.bc?catid=@catid" class="w-full h-full leading-[35px] block p-2 text-center text-zinc-900 text-sm font-normal hover:text-green-600">@title</a>
+        </li>
+    </face>
+    <face>
+        <li class="w-[160px] h-[50px] bg-white rounded-lg text-center overflow-hidden max-xl:m-auto">
+            <a href="@link" class="w-full h-full leading-[35px] block p-2 text-center text-zinc-900 text-sm font-normal hover:text-green-600">@title</a>
+        </li>
+    </face>
+</basis>

@@ -1,0 +1,21 @@
+{
+    "name": "آژانس مسافرتی آیشم",
+    "short_name": "آژانس مسافرتی آیشم",
+    "description": "آژانس مسافرتی آیشم مجری اصلی تور های خارجی - خرید تورهای مسافرتی داخلی و خارجی با بهترین و ارزان قیمت",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#181146",
+    "icons": [
+        {
+            "src": "[##cms.cms.cdn##]/images/custom_icon_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "[##cms.cms.cdn##]/images/custom_icon_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

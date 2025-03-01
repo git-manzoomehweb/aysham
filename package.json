@@ -1,0 +1,19 @@
+{
+  "name": "aysham",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "watch:mobile": "npx tailwindcss -c tailwind.config.mobile.js -i ./mobile/assets/css/input.css -o ./mobile/assets/css/output.css --watch",
+    "watch:HF-mobile": "npx tailwindcss -c tailwind.config.mobile.js -i ./mobile/assets/css/input-HF.css -o ./mobile/assets/css/output-HF.css --watch",
+    "watch:web": "npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/input.css -o ./web/assets/css/output.css --watch",
+    "watch:HF-web": "npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/input-HF.css -o ./web/assets/css/output-HF.css --watch"
+  },
+
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "description": ""
+}

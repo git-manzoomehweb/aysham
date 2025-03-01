@@ -1,0 +1,205 @@
+<basis core="dbsource" source="basiscore" lid="1" mid="18" name="db" usedforid="[##cms.query.catid##]">
+  <member name="scalar" type="scalar" typeid="150" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+  <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="1" mid="20" name="db" catid="[##cms.query.catid##]">
+  <member name="tour-list" type="list" link="tour.bc" propertyid="8181,8077,10000504" perpage="21" pageno="[##cms.query.pagenum|(1)##]" size="403x330" order="[##cms.Host.tour-list-order|(ord)##]" />
+  <member name="paging" type="list" request="paging" count="5" parentname="tour-list" /> 
+</basis>
+<basis core="dbsource" source="basiscore" mid="1" name="list" lid="1" schemaid="987" term="[##cms.query.term##]">
+  <member name="airline" type="list" request="spelist" />
+</basis>
+<basis core="inlinesource" name="joining">
+  <member name="list" lefttblcol="db.tour-list.prp_10000504" righttblcol="list.airline.name" format="join" jointype="leftjoin" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="1" usedforid="[##cms.query.aid##]">
+  <member name="aid-text" type="view" />
+</basis>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <title>[##cms.seo.title|(آژانس مسافرتی آیشم؛ خرید تورهای مسافرتی داخلی و خارجی ارزان قیمت)##]</title>
+    <meta name="description" content="[##cms.seo.description|(آژانس مسافرتی آیشم؛ خرید تورهای مسافرتی داخلی و خارجی ارزان قیمت)##]">
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+<basis core="call" file="pwa.inc"/>
+    <basis core="call" file="style.inc" />
+</head>
+<body>
+    <main class="tour-list-page w-auto bg-white dir-rtl">
+      <basis core="call" file="header-demo.inc"/>
+        <div class="tour-list-banner w-full relative">
+            <div class="w-[1280px] py-6 m-auto pt-[300px] max-xl:w-full max-xl:px-3 max-xl:pt-20">
+              <basis core="print" datamembername="db.scalar"><face><h1 class="text-2xl text-white mb-4 text-center">@Column1</h1></face></basis>
+                <div class="breadcrumbs w-full h-[43px] text-cente flex-col justify-start items-start gap-3 inline-flex">
+                  <ul class="w-full text-center" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    <li class="inline-block text-sm text-white font-normal" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem"> <a class="text-white hover:text-primary-900" itemprop="item" href="/" aria-label="home"><span itemprop="name">خانه</span> <meta itemprop="position" content="1" />
+                    </a> </li>
+                    <basis core="print" datamembername="db.navigation">
+                        <face filter="RowNumber=max(RowNumber) and parentcatid<>125139">
+                            <li class="inline-block text-sm text-white font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem"> <span itemprop="name">@title</span><meta itemprop="position" content="@rownumber" /> </li>
+                        </face>
+                        <face filter="link is null and parentcatid<>125139">
+                            <li class="inline-block text-sm text-white font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem"> <a class="text-white hover:text-primary-900" itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title"><span itemprop="name">@title</span><meta itemprop="position" content="@rownumber" /></a> </li>
+                        </face>
+                        <face filter="parentcatid<>125139">
+                            <li class="inline-block text-sm text-white font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem"> <a class="text-white hover:text-primary-900" itemprop="item" href="@link" aria-label="@title"><span itemprop="name">@title</span><meta itemprop="position" content="@rownumber" /></a> </li>
+                        </face>
+                    </basis>
+                </ul>
+                </div>
+            </div>
+        </div>
+      <div class="w-[1280px] py-6 m-auto max-xl:w-full max-xl:px-3">
+        <div class="self-stretch flex-col justify-start items-start gap-[76px] flex">
+          <basis core="list" datamembername="joining.list">
+            <layout>
+              <div class="self-stretch flex-col justify-start items-end gap-6 flex"><div class="grid grid-cols-3 gap-3 max-xl:grid-cols-1 max-xl:w-full">@child</div></div>
+            </layout>
+            <face filter="link is null">
+              <article class="grow shrink basis-0 w-[418px] h-[596px] p-2 bg-zinc-50 rounded-lg border border-zinc-300 justify-start items-center gap-2.5 flex overflow-hidden max-xl:h-auto max-xl:m-auto max-xl:w-auto">
+                <a href="/tour.bc?id=@db.tour-list.id" aria-label="@db.tour-list.title" class="group grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex max-xl:w-full">
+                  <div class="self-stretch h-[380px] flex-col justify-start items-end gap-3 flex max-xl:h-auto">
+                    <div class="self-stretch h-[38px] justify-between items-center inline-flex max-xl:h-auto">
+                      <img loading="lazy" src="@list.airline.pic" width="auto" height="23" alt="@db.tour-list.title airline"/>
+                      <div class="w-[101px] h-[38px] px-3 py-1 bg-red-200 rounded-[25px] justify-center items-center gap-2.5 flex max-xl:w-auto max-xl:h-auto">
+                        <div class="text-right text-red-600 text-sm font-normal leading-7">special offer</div>
+                      </div>
+                    </div>
+                    <figure>
+                      <img class="rounded-lg max-xl:w-full max-xl:h-auto max-xl:max-w-max" loading="lazy" src="[##cms.cms.cdn##]/@db.tour-list.00403X00330prp" width="403" height="330" alt="@db.tour-list.title"/>
+                    </figure>
+                  </div>
+                  <header class="self-stretch h-32 flex-col justify-start items-end gap-2 flex">
+                    <h2 class="self-stretch text-right text-zinc-900 text-base font-bold leading-normal">@db.tour-list.title</h2>
+                    <div class="self-stretch justify-start items-center gap-2 inline-flex">
+                      <div data-svg-wrapper><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.66589 17.0369C9.09389 17.0369 9.4419 17.3839 9.4419 17.8129C9.4419 18.2409 9.09389 18.5889 8.66589 18.5889C8.23789 18.5889 7.88989 18.2409 7.88989 17.8129C7.88989 17.3839 8.23789 17.0369 8.66589 17.0369ZM12.7039 17.0369C13.1319 17.0369 13.4799 17.3839 13.4799 17.8129C13.4799 18.2409 13.1319 18.5889 12.7039 18.5889C12.2749 18.5889 11.9279 18.2409 11.9279 17.8129C11.9279 17.3839 12.2749 17.0369 12.7039 17.0369ZM12.7039 13.5419C13.1319 13.5419 13.4799 13.8889 13.4799 14.3179C13.4799 14.7459 13.1319 15.0939 12.7039 15.0939C12.2749 15.0939 11.9279 14.7459 11.9279 14.3179C11.9279 13.8889 12.2749 13.5419 12.7039 13.5419ZM15.9389 14.3089C15.9389 13.8949 16.2749 13.5589 16.6889 13.5589C17.1029 13.5589 17.4429 13.8949 17.4429 14.3089C17.4429 14.3359 17.4419 14.3609 17.4389 14.3859V17.8069C17.4389 18.2209 17.1029 18.5569 16.6889 18.5569C16.2749 18.5569 15.9389 18.2209 15.9389 17.8069V14.3089ZM4.06689 16.8649C4.06689 19.8449 5.85689 21.6249 8.85689 21.6249H16.4769C19.4769 21.6249 21.2669 19.8749 21.2669 16.9349V11.2249C21.2669 11.1144 21.1774 11.0249 21.0669 11.0249H4.26689C4.15643 11.0249 4.06689 11.1144 4.06689 11.2249V16.8649Z" fill="#27272A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0371 5.325C19.3071 4.605 18.2771 4.195 17.0571 4.085V3.125C17.0571 2.715 16.7171 2.375 16.3071 2.375C15.8871 2.375 15.5571 2.715 15.5571 3.125V6.675C15.4871 6.695 15.4271 6.715 15.3571 6.715C14.9371 6.715 14.6071 6.375 14.6071 5.965V4.245C14.6071 4.13454 14.5176 4.045 14.4071 4.045H9.77714V3.125C9.77714 2.715 9.44714 2.375 9.02714 2.375C8.61714 2.375 8.27714 2.715 8.27714 3.125V6.675C8.21714 6.695 8.14714 6.715 8.07714 6.715C7.66714 6.715 7.32714 6.375 7.32714 5.965V4.50055C7.32714 4.37063 7.20478 4.27513 7.08032 4.31245C5.17161 4.88473 4.06714 6.43211 4.06714 8.725V9.325C4.06714 9.43546 4.15669 9.525 4.26714 9.525H21.0671C21.1776 9.525 21.2671 9.43546 21.2671 9.325V8.725C21.2671 7.315 20.8471 6.135 20.0371 5.325Z" fill="#27272A"/></svg></div>
+                      <div class="text-right text-zinc-900 text-sm font-normal leading-tight">@db.tour-list.prp_8077</div>
+                    </div>
+                    <div class="self-stretch bg-white justify-end items-center gap-4 inline-flex">
+                      <div class="grow shrink basis-0 h-16 px-2 py-3 bg-green-200 rounded-lg justify-end items-center gap-2.5 flex overflow-hidden">
+                        <div class="grow shrink basis-0 flex-col justify-start items-end inline-flex">
+                          <div class="self-stretch h-5 text-right text-zinc-900 text-sm font-normal leading-tight">قیمت از:</div>
+                          <div class="self-stretch h-5 text-right text-green-600 text-base font-bold leading-normal tour-price">@db.tour-list.prp_8181</div>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                  <footer class="self-stretch h-12 px-6 py-2 bg-primary-900 rounded-lg justify-center items-center gap-2.5 inline-flex group-hover:bg-green-600">
+                    <div class="text-center text-white text-sm font-normal leading-tight">مشاهده تور</div>
+                  </footer>
+                </a>
+              </article>
+            </face>
+            <face>
+              <article class="grow shrink basis-0 w-[418px] h-[596px] p-2 bg-zinc-50 rounded-lg border border-zinc-300 justify-start items-center gap-2.5 flex overflow-hidden max-xl:h-auto max-xl:m-auto max-xl:w-auto">
+                <a href="/@db.tour-list.link" aria-label="@db.tour-list.title" class="group grow shrink basis-0 flex-col justify-start items-start gap-3 inline-flex max-xl:w-full">
+                  <div class="self-stretch h-[380px] flex-col justify-start items-end gap-3 flex max-xl:h-auto">
+                    <div class="self-stretch h-[38px] justify-between items-center inline-flex max-xl:h-auto">
+                      <img loading="lazy" src="@list.airline.pic" width="auto" height="23" alt="@db.tour-list.title airline"/>
+                      <div class="w-[101px] h-[38px] px-3 py-1 bg-red-200 rounded-[25px] justify-center items-center gap-2.5 flex max-xl:w-auto max-xl:h-auto">
+                        <div class="text-right text-red-600 text-sm font-normal leading-7">special offer</div>
+                      </div>
+                    </div>
+                    <figure>
+                      <img class="rounded-lg max-xl:w-full max-xl:h-auto max-xl:max-w-max" loading="lazy" src="[##cms.cms.cdn##]/@db.tour-list.00403X00330prp" width="403" height="330" alt="@db.tour-list.title"/>
+                    </figure>
+                  </div>
+                  <header class="self-stretch h-32 flex-col justify-start items-end gap-2 flex">
+                    <h2 class="self-stretch text-right text-zinc-900 text-base font-bold leading-normal">@db.tour-list.title</h2>
+                    <div class="self-stretch justify-start items-center gap-2 inline-flex">
+                      <div data-svg-wrapper><svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.66589 17.0369C9.09389 17.0369 9.4419 17.3839 9.4419 17.8129C9.4419 18.2409 9.09389 18.5889 8.66589 18.5889C8.23789 18.5889 7.88989 18.2409 7.88989 17.8129C7.88989 17.3839 8.23789 17.0369 8.66589 17.0369ZM12.7039 17.0369C13.1319 17.0369 13.4799 17.3839 13.4799 17.8129C13.4799 18.2409 13.1319 18.5889 12.7039 18.5889C12.2749 18.5889 11.9279 18.2409 11.9279 17.8129C11.9279 17.3839 12.2749 17.0369 12.7039 17.0369ZM12.7039 13.5419C13.1319 13.5419 13.4799 13.8889 13.4799 14.3179C13.4799 14.7459 13.1319 15.0939 12.7039 15.0939C12.2749 15.0939 11.9279 14.7459 11.9279 14.3179C11.9279 13.8889 12.2749 13.5419 12.7039 13.5419ZM15.9389 14.3089C15.9389 13.8949 16.2749 13.5589 16.6889 13.5589C17.1029 13.5589 17.4429 13.8949 17.4429 14.3089C17.4429 14.3359 17.4419 14.3609 17.4389 14.3859V17.8069C17.4389 18.2209 17.1029 18.5569 16.6889 18.5569C16.2749 18.5569 15.9389 18.2209 15.9389 17.8069V14.3089ZM4.06689 16.8649C4.06689 19.8449 5.85689 21.6249 8.85689 21.6249H16.4769C19.4769 21.6249 21.2669 19.8749 21.2669 16.9349V11.2249C21.2669 11.1144 21.1774 11.0249 21.0669 11.0249H4.26689C4.15643 11.0249 4.06689 11.1144 4.06689 11.2249V16.8649Z" fill="#27272A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.0371 5.325C19.3071 4.605 18.2771 4.195 17.0571 4.085V3.125C17.0571 2.715 16.7171 2.375 16.3071 2.375C15.8871 2.375 15.5571 2.715 15.5571 3.125V6.675C15.4871 6.695 15.4271 6.715 15.3571 6.715C14.9371 6.715 14.6071 6.375 14.6071 5.965V4.245C14.6071 4.13454 14.5176 4.045 14.4071 4.045H9.77714V3.125C9.77714 2.715 9.44714 2.375 9.02714 2.375C8.61714 2.375 8.27714 2.715 8.27714 3.125V6.675C8.21714 6.695 8.14714 6.715 8.07714 6.715C7.66714 6.715 7.32714 6.375 7.32714 5.965V4.50055C7.32714 4.37063 7.20478 4.27513 7.08032 4.31245C5.17161 4.88473 4.06714 6.43211 4.06714 8.725V9.325C4.06714 9.43546 4.15669 9.525 4.26714 9.525H21.0671C21.1776 9.525 21.2671 9.43546 21.2671 9.325V8.725C21.2671 7.315 20.8471 6.135 20.0371 5.325Z" fill="#27272A"/></svg></div>
+                      <div class="text-right text-zinc-900 text-sm font-normal leading-tight">@db.tour-list.prp_8077</div>
+                    </div>
+                    <div class="self-stretch bg-white justify-end items-center gap-4 inline-flex">
+                      <div class="grow shrink basis-0 h-16 px-2 py-3 bg-green-200 rounded-lg justify-end items-center gap-2.5 flex overflow-hidden">
+                        <div class="grow shrink basis-0 flex-col justify-start items-end inline-flex">
+                          <div class="self-stretch h-5 text-right text-zinc-900 text-sm font-normal leading-tight">قیمت از:</div>
+                          <div class="self-stretch h-5 text-right text-green-600 text-base font-bold leading-normal tour-price">@db.tour-list.prp_8181</div>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+                  <footer class="self-stretch h-12 px-6 py-2 bg-primary-900 rounded-lg justify-center items-center gap-2.5 inline-flex group-hover:bg-green-600">
+                    <div class="text-center text-white text-sm font-normal leading-tight">مشاهده تور</div>
+                  </footer>
+                </a>
+              </article>
+            </face>
+          </basis>
+          <div id="paging" class="w-full h-auto text-center clear-both dir-rtl float-right my-7">
+            <ul class="cd-pagination no-space dir-ltr" id="wibpaging">
+            <basis core="print" datamembername="db.paging">  
+            <face  filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">  
+            <li class="page-no prev-page w-12 h-12 leading-[48px] bg-primary-900 rounded-2xl overflow-hidden text-sm mx-6 mb-2.5 inline-block hover:bg-green-600"><a class="text-white" href="/[##cms.cms.link_page##]&pagenum=@page" aria-label="angle-left"><svg width="11" height="17" class="inline-block align-middle" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.7499 16.914L0.335938 8.5L8.7499 0.0859985L10.1639 1.5L3.1639 8.5L10.1639 15.5L8.7499 16.914Z" fill="#fff"/></svg></a></li>
+            </face>
+            <face  filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">  
+            <li class="page-no prev-page w-12 h-12 leading-[48px] bg-primary-900  rounded-2xl overflow-hidden text-sm mx-6 mb-2.5 inline-block hover:bg-green-600"><a class="text-white" href="/[##cms.cms.pageurl##]?pagenum=@page" aria-label="angle-left"><svg width="11" height="17" class="inline-block align-middle" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.7499 16.914L0.335938 8.5L8.7499 0.0859985L10.1639 1.5L3.1639 8.5L10.1639 15.5L8.7499 16.914Z" fill="#fff"/></svg></a></li>
+            </face>
+            </basis>
+            <basis core="print" datamembername="db.paging">   
+            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+            <li class="page-no w-12 h-12 leading-[48px] bg-primary-50 rounded-2xl overflow-hidden text-sm mx-1 mb-2.5 inline-block hover:bg-green-600"><a class="text-zinc-900" class="current font-color-1" href="/[##cms.cms.link_page##]&pagenum=@page">@page</a></li>
+            </face>   
+            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+            <li class="page-no w-12 h-12 leading-[48px] bg-primary-50 rounded-2xl overflow-hidden text-sm mx-1 mb-2.5 inline-block hover:bg-green-600"><a class="text-zinc-900" class="current font-color-1" href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a></li>
+            </face>    
+            <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+            <li class="page-no w-12 h-12 leading-[48px] bg-primary-50 rounded-2xl overflow-hidden text-sm mx-1 mb-2.5 inline-block hover:bg-green-600"><a class="text-zinc-900" href="/[##cms.cms.link_page##]&pagenum=@page">@page</a></li>
+            </face> 
+            <face filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+            <li class="page-no w-12 h-12 leading-[48px] bg-primary-50 rounded-2xl overflow-hidden text-sm mx-1 mb-2.5 inline-block hover:bg-green-600"><a class="text-zinc-900" href="/[##cms.cms.pageurl##]?pagenum=@page">@page</a></li>
+            </face>   
+            </basis>
+            <basis core="print" datamembername="db.paging">  
+            <face  filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">  
+            <li class="page-no next-page w-12 h-12 leading-[48px] bg-primary-900 rounded-2xl overflow-hidden text-sm mx-6 mb-2.5 inline-block hover:bg-green-600"><a class="text-white" href="/[##cms.cms.link_page##]&pagenum=@page" aria-label="angle-right"><svg width="11" height="17" class="inline-block align-middle" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.2501 0.0860016L10.6641 8.5L2.2501 16.914L0.836102 15.5L7.8361 8.5L0.836103 1.5L2.2501 0.0860016Z" fill="#fff"/></svg></a></li>
+            </face>
+            <face  filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">  
+            <li class="page-no next-page w-12 h-12 leading-[48px] bg-primary-900 rounded-2xl overflow-hidden text-sm mx-6 mb-2.5 inline-block hover:bg-green-600"><a class="text-white" href="/[##cms.cms.pageurl##]?pagenum=@page" aria-label="angle-right"><svg width="11" height="17" class="inline-block align-middle" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.2501 0.0860016L10.6641 8.5L2.2501 16.914L0.836102 15.5L7.8361 8.5L0.836103 1.5L2.2501 0.0860016Z" fill="#fff"/></svg></a></li>
+            </face>
+            </basis>
+         </ul>
+          </div>
+          <basis core="print" datamembername="db.aid-text">
+            <face filter="typeid not in(159,150,160,161,162) and prpid not in (7249,7248)">
+              <article class="block">
+                <header>
+                  <div class="w-full mb-6">
+                    <h3 class="ext-right text-zinc-900 text-2xl font-bold leading-loose max-xl:text-base max-xl:mb-2" itemprop="@vocabulary">@text</h3>
+                    <div class="text-justify text-zinc-900 text-sm font-normal leading-tight" itemprop="@vocabulary">@largetext</div>
+                  </div>
+                </header>
+              </article>
+            </face>
+          </basis>
+              <div class="middle-banner block w-full h-[217px] relative rounded-lg max-xl:h-auto max-xl:p-2">
+                  <div class="w-1/2 float-right h-[217px] pt-[40px] pr-[40px] max-xl:h-auto max-xl:w-full max-xl:pt-0 max-xl:pr-0">
+                    <h4 class="text-white font-bold text-2xl mb-4">تور های دور دنیا</h4>
+                    <p class="text-white text-base mb-4">بار رزرو اولین ( خرید اولی ) تور 50 درصد تخفیف دریافت کنید</p>
+                    <a href="[##cms.Host.banner-link##]" class="w-[160px] h-12 text-white text-sm px-6 py-2 bg-primary-900 rounded-lg justify-center items-center gap-2.5 inline-flex hover:bg-green-600">دریافت تخفیف</a>
+                  </div>
+              </div>
+        </div>
+      </div>
+      <basis core="call" file="footer-demo.inc"/>
+    </main>
+</body>
+</html>
